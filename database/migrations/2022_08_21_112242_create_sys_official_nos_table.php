@@ -4,9 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateIdtypesTable extends Migration
+class CreateSysOfficialNosTable extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -14,11 +13,11 @@ class CreateIdtypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('idtypes', function (Blueprint $table) {
-            $table->id('id');
-            $table->string('description', 60);
+        Schema::create('sys_official_nos', function (Blueprint $table) {
+            $table->id();
+            $table->string('requisition_ctrl_no', 25); 
             $table->timestamps();
-            $table->softDeletes();
+
         });
     }
 
@@ -29,6 +28,6 @@ class CreateIdtypesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('idtypes');
+        Schema::dropIfExists('sys_official_nos');
     }
 }

@@ -26,3 +26,11 @@ Route::get('/home', 'HomeController@index')->middleware('verified');
 
 
 Route::resource('idtypes', 'idtypeController');
+
+
+Route::resource('users', 'UserController')->middleware('auth');
+
+
+
+
+Route::resource('requisitions', 'RequisitionController');

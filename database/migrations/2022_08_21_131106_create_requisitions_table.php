@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateIdtypesTable extends Migration
+class CreateRequisitionsTable extends Migration
 {
 
     /**
@@ -14,11 +14,19 @@ class CreateIdtypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('idtypes', function (Blueprint $table) {
+        
+
+        
+        Schema::create('requisitions', function (Blueprint $table) {
+            
             $table->id('id');
-            $table->string('description', 60);
+            $table->string('ctrl_no', 50)->default('2022-00001');
+            $table->integer('truck_id')->unsigned();
+            $table->enum('status', ['is_pending','is_cancelled','is_completed'])->default('is_pending');
             $table->timestamps();
             $table->softDeletes();
+
+            $table->unique('ctrl_no');
         });
     }
 
@@ -29,6 +37,6 @@ class CreateIdtypesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('idtypes');
+        Schema::drop('requisitions');
     }
 }
